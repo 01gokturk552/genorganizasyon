@@ -78,7 +78,8 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-[68px]">
 
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 shrink-0">
+          <Link href="/" className="flex items-center gap-2.5 shrink-0">
+            <img src="/favicon.ico" alt="Gen Organizasyon" className="w-8 h-8 object-contain" />
             <div className="flex flex-col leading-none">
               <span className="text-[#4e8ac4] font-black text-2xl tracking-tight">GEN</span>
               <span className="text-white/45 text-[9px] font-medium tracking-[0.06em]">Organizasyon</span>
