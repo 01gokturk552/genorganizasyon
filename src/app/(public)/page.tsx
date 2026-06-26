@@ -13,20 +13,29 @@ export const metadata: Metadata = {
 export const dynamic = "force-dynamic";
 
 export default async function HomePage() {
-  const [events, news, stats, settings] = await Promise.all([
-    prisma.event.findMany({
-      where: { isPublished: true },
-      orderBy: { order: "asc" },
-      take: 6,
-    }),
-    prisma.news.findMany({
-      where: { isPublished: true },
-      orderBy: { publishedAt: "desc" },
-      take: 3,
-    }),
-    prisma.stat.findMany(),
-    prisma.setting.findMany(),
-  ]);
+  let events: Awaited<ReturnType<typeof prisma.event.findMany>> = [];
+  let news: Awaited<ReturnType<typeof prisma.news.findMany>> = [];
+  let stats: Awaited<ReturnType<typeof prisma.stat.findMany>> = [];
+  let settings: Awaited<ReturnType<typeof prisma.setting.findMany>> = [];
+
+  try {
+    [events, news, stats, settings] = await Promise.all([
+      prisma.event.findMany({
+        where: { isPublished: true },
+        orderBy: { order: "asc" },
+        take: 6,
+      }),
+      prisma.news.findMany({
+        where: { isPublished: true },
+        orderBy: { publishedAt: "desc" },
+        take: 3,
+      }),
+      prisma.stat.findMany(),
+      prisma.setting.findMany(),
+    ]);
+  } catch (err) {
+    console.error("[HomePage] DB bağlantı hatası:", err);
+  }
 
   const settingsMap = Object.fromEntries(settings.map((s) => [s.key, s.value]));
 
