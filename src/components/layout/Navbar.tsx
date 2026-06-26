@@ -68,8 +68,10 @@ export default function Navbar() {
 
   return (
     <header
-      className={`bg-[#1a3a6b] text-white sticky top-0 z-50 transition-shadow duration-300 ${
-        scrolled ? "shadow-2xl shadow-[#1a3a6b]/40" : "shadow-lg"
+      className={`text-white sticky top-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? "bg-[#1a3a6b]/95 backdrop-blur-xl shadow-2xl shadow-black/20 border-b border-white/[0.06]"
+          : "bg-[#1a3a6b] shadow-lg shadow-[#0e2247]/30"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 lg:px-8">

@@ -103,12 +103,20 @@ export default function HeroSection({ settings }: Props) {
   return (
     <>
       <section className="relative bg-[#0e2247] text-white overflow-hidden min-h-[92vh] flex flex-col">
-        {/* Arka plan elementleri */}
+        {/* Arka plan katmanları */}
         <div className="absolute inset-0 pointer-events-none select-none">
-          <div className="absolute top-0 right-0 w-[700px] h-[700px] rounded-full bg-[#1a3a6b] opacity-60 blur-3xl translate-x-1/3 -translate-y-1/4" />
-          <div className="absolute bottom-0 left-0 w-[500px] h-[500px] rounded-full bg-[#4e8ac4] opacity-10 blur-3xl -translate-x-1/3 translate-y-1/4" />
-          {/* Grid deseni */}
-          <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: "radial-gradient(circle, #fff 1px, transparent 1px)", backgroundSize: "32px 32px" }} />
+          {/* Mesh gradient */}
+          <div className="absolute inset-0 bg-gradient-to-br from-[#0e2247] via-[#0e2247] to-[#091a38]" />
+          {/* Animasyonlu blob'lar */}
+          <div className="absolute top-[-10%] right-[-5%] w-[600px] h-[600px] rounded-full bg-[#1a3a6b] opacity-70 blur-[90px]" style={{ animation: "blobFloat 14s ease-in-out infinite" }} />
+          <div className="absolute bottom-[-15%] left-[-8%] w-[500px] h-[500px] rounded-full bg-[#4e8ac4] opacity-[0.12] blur-[80px]" style={{ animation: "blobFloat 18s ease-in-out infinite reverse" }} />
+          <div className="absolute top-[40%] left-[30%] w-[300px] h-[300px] rounded-full bg-[#2a4f8f] opacity-30 blur-[60px]" style={{ animation: "blobFloat 10s ease-in-out infinite 2s" }} />
+          {/* Nokta grid */}
+          <div className="absolute inset-0 dot-grid" />
+          {/* Radyal vurgu */}
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_-10%,rgba(78,138,196,0.12),transparent)]" />
+          {/* Alt geçiş */}
+          <div className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-[#0a1628]/60 to-transparent" />
         </div>
 
         <div className="relative flex-1 flex items-center">
@@ -121,12 +129,12 @@ export default function HeroSection({ settings }: Props) {
               </div>
 
               {/* Başlık */}
-              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black leading-[1.1] mb-6 tracking-tight">
+              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black leading-[1.08] mb-6" style={{ letterSpacing: "-0.035em" }}>
                 {titleLines[0]}
                 {titleLines[1] && (
                   <>
                     <br />
-                    <span className="text-[#4e8ac4]">{titleLines[1]}</span>
+                    <span className="text-gradient">{titleLines[1]}</span>
                   </>
                 )}
               </h1>
@@ -155,16 +163,16 @@ export default function HeroSection({ settings }: Props) {
               </div>
 
               {/* İstatistikler */}
-              <div className="flex flex-wrap gap-8 mt-14 pt-8 border-t border-white/10">
+              <div className="flex flex-wrap gap-6 mt-14 pt-8 border-t border-white/[0.08]">
                 {[
                   { n: "50+",   l: "Ekip Arkadaşı" },
                   { n: "30+",   l: "Organizasyon" },
                   { n: "5000+", l: "Katılımcı" },
                   { n: "4+",    l: "Yıllık Deneyim" },
                 ].map(({ n, l }) => (
-                  <div key={l}>
-                    <p className="text-3xl font-black text-[#4e8ac4] leading-none">{n}</p>
-                    <p className="text-white/50 text-sm mt-1.5">{l}</p>
+                  <div key={l} className="glass rounded-xl px-5 py-3.5 min-w-[96px] text-center">
+                    <p className="text-2xl font-black text-[#93bde0] leading-none tracking-tight">{n}</p>
+                    <p className="text-white/50 text-xs mt-1.5 font-medium">{l}</p>
                   </div>
                 ))}
               </div>

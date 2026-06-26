@@ -50,7 +50,7 @@ function EventGroup({ title, color, events }: { title: string; color: string; ev
       ) : (
         <div className="space-y-4">
           {events.map((ev) => (
-            <div key={ev.id} className="card-hover group flex gap-4 bg-white border border-[#e8ecf2] rounded-2xl p-4 cursor-pointer">
+            <div key={ev.id} className="card-hover group flex gap-4 bg-white border border-[#e8ecf2] rounded-2xl p-4 cursor-pointer shadow-[var(--shadow-xs)]">
               <div className="relative w-20 h-20 rounded-xl overflow-hidden shrink-0 bg-[#f4f6f9]">
                 {ev.imageUrl
                   ? <Image src={ev.imageUrl} alt={ev.title} fill className="object-cover group-hover:scale-110 transition-transform duration-500" />
