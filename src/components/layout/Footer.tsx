@@ -28,7 +28,7 @@ export default function Footer() {
             <div className="lg:col-span-1">
               <div className="mb-5">
                 <span className="text-[#4e8ac4] font-black text-3xl tracking-tight">GEN</span>
-                <p className="text-white/40 text-[11px] font-medium tracking-[0.18em] uppercase mt-0.5">Organizasyon</p>
+                <p className="text-white/40 text-[10px] font-medium tracking-[0.04em] mt-1">Gençlerin Erişim Noktası</p>
               </div>
               <p className="text-white/55 text-sm leading-relaxed mb-6">
                 Gençlerin potansiyelini ortaya çıkaran, liderlik ve organizasyon becerilerini geliştiren öncü platform.

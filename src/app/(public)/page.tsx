@@ -6,8 +6,8 @@ import NewsSection from "@/components/home/NewsSection";
 import StatsSection from "@/components/home/StatsSection";
 
 export const metadata: Metadata = {
-  title: "Gen Organizasyon — Gençlerin Gücünü Organizasyona Dönüştürüyoruz",
-  description: "Lise ve üniversite öğrencilerini bir araya getirerek liderlik, organizasyon ve ekip çalışması becerilerini geliştiriyoruz.",
+  title: "GEN — Gençlerin Erişim Noktası",
+  description: "GEN (Gençlerin Erişim Noktası) — Lise ve üniversite öğrencilerini bir araya getirerek liderlik, organizasyon ve ekip çalışması becerilerini geliştiriyoruz.",
 };
 
 export const dynamic = "force-dynamic";

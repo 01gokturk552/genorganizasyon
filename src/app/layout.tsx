@@ -16,9 +16,9 @@ const jakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: { default: "Gen Organizasyon", template: "%s | Gen Organizasyon" },
-  description: "Gençlerin potansiyelini ortaya çıkaran, liderlik ve organizasyon becerilerini geliştiren platform.",
-  keywords: ["gen organizasyon", "gençlik", "etkinlik", "liderlik", "organizasyon", "lise", "üniversite"],
+  title: { default: "GEN — Gençlerin Erişim Noktası", template: "%s | GEN" },
+  description: "GEN (Gençlerin Erişim Noktası) — Gençlerin potansiyelini ortaya çıkaran, liderlik ve organizasyon becerilerini geliştiren platform.",
+  keywords: ["gen", "gençlerin erişim noktası", "gençlik", "etkinlik", "liderlik", "organizasyon", "lise", "üniversite"],
   openGraph: {
     type: "website",
     locale: "tr_TR",
