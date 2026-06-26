@@ -81,7 +81,7 @@ export default function Navbar() {
           <Link href="/" className="flex items-center gap-3 shrink-0">
             <div className="flex flex-col leading-none">
               <span className="text-[#4e8ac4] font-black text-2xl tracking-tight">GEN</span>
-              <span className="text-white/45 text-[9px] font-medium tracking-[0.06em]">Gençlerin Erişim Noktası</span>
+              <span className="text-white/45 text-[9px] font-medium tracking-[0.06em]">Organizasyon</span>
             </div>
           </Link>
 

@@ -125,7 +125,7 @@ export default function HeroSection({ settings }: Props) {
               {/* Etiket */}
               <div className="inline-flex items-center gap-2 bg-[#4e8ac4]/15 border border-[#4e8ac4]/25 text-[#4e8ac4] text-xs font-bold tracking-[0.08em] px-4 py-2 rounded-full mb-8">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#4e8ac4] animate-pulse" />
-                GEN — Gençlerin Erişim Noktası
+                Gen Organizasyon
               </div>
 
               {/* Başlık */}
