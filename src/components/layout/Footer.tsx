@@ -27,7 +27,7 @@ export default function Footer() {
             {/* Marka */}
             <div className="lg:col-span-1">
               <div className="mb-5 flex items-center gap-3">
-                <img src="/favicon.ico" alt="Gen Organizasyon" className="w-10 h-10 object-contain" />
+                <img src="/favicon.ico" alt="Gen Organizasyon" className="w-10 h-10 object-cover rounded-full" />
                 <div className="flex flex-col leading-none">
                   <span className="text-[#4e8ac4] font-black text-3xl tracking-tight">GEN</span>
                   <p className="text-white/40 text-[10px] font-medium tracking-[0.04em] mt-1">Organizasyon</p>
