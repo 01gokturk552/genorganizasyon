@@ -6,7 +6,7 @@ import NewsSection from "@/components/home/NewsSection";
 import StatsSection from "@/components/home/StatsSection";
 
 export const metadata: Metadata = {
-  title: "Gen Organizasyon",
+  title: { absolute: "Gen Organizasyon | Gençlerin Erişim Noktası" },
   description: "Gen Organizasyon — Lise ve üniversite öğrencilerini bir araya getirerek liderlik, organizasyon ve ekip çalışması becerilerini geliştiriyoruz.",
 };
 
