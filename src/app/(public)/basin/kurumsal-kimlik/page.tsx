@@ -17,7 +17,8 @@ const CATEGORY_CONFIG: Record<string, { label: string; icon: React.ReactNode; co
 };
 
 export default async function KurumsalKimlikPage() {
-  const items = await prisma.pressIdentity.findMany();
+  let items: Awaited<ReturnType<typeof prisma.pressIdentity.findMany>> = [];
+  try { items = await prisma.pressIdentity.findMany(); } catch (e) { console.error("[KurumsalKimlik]", e); }
   const grouped = items.reduce<Record<string, typeof items>>((acc, i) => {
     if (!acc[i.category]) acc[i.category] = [];
     acc[i.category].push(i);

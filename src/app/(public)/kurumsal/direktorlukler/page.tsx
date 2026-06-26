@@ -11,9 +11,10 @@ export const metadata: Metadata = {
 export const dynamic = "force-dynamic";
 
 export default async function DirektorluklerPage() {
-  const directorates = await prisma.directorate.findMany({
-    orderBy: { order: "asc" },
-  });
+  let directorates: Awaited<ReturnType<typeof prisma.directorate.findMany>> = [];
+  try {
+    directorates = await prisma.directorate.findMany({ orderBy: { order: "asc" } });
+  } catch (e) { console.error("[Direktorlukler]", e); }
 
   return (
     <div className="min-h-screen">

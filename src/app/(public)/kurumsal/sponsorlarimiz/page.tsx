@@ -19,10 +19,13 @@ const CATEGORY_LABELS: Record<string, string> = {
 };
 
 export default async function SponsorlarimizPage() {
-  const sponsors = await prisma.sponsor.findMany({
-    where: { isActive: true },
-    orderBy: [{ category: "asc" }, { order: "asc" }],
-  });
+  let sponsors: Awaited<ReturnType<typeof prisma.sponsor.findMany>> = [];
+  try {
+    sponsors = await prisma.sponsor.findMany({
+      where: { isActive: true },
+      orderBy: [{ category: "asc" }, { order: "asc" }],
+    });
+  } catch (e) { console.error("[Sponsorlarimiz]", e); }
 
   const grouped = sponsors.reduce<Record<string, typeof sponsors>>((acc, s) => {
     if (!acc[s.category]) acc[s.category] = [];

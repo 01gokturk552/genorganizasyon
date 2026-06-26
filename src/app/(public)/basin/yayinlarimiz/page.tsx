@@ -12,10 +12,13 @@ export const metadata: Metadata = {
 export const dynamic = "force-dynamic";
 
 export default async function YayinlarimizPage() {
-  const publications = await prisma.publication.findMany({
-    where: { isPublished: true },
-    orderBy: { createdAt: "desc" },
-  });
+  let publications: Awaited<ReturnType<typeof prisma.publication.findMany>> = [];
+  try {
+    publications = await prisma.publication.findMany({
+      where: { isPublished: true },
+      orderBy: { createdAt: "desc" },
+    });
+  } catch (e) { console.error("[Yayinlarimiz]", e); }
 
   return (
     <div className="min-h-screen">

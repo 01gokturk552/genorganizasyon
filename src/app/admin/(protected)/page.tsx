@@ -5,18 +5,21 @@ import { Newspaper, Calendar, Users, MessageSquare, ArrowRight, TrendingUp } fro
 export const dynamic = "force-dynamic";
 
 export default async function AdminDashboard() {
-  const [newsCount, eventCount, memberCount, applicationCount, pendingApplications] = await Promise.all([
-    prisma.news.count(),
-    prisma.event.count(),
-    prisma.teamMember.count({ where: { isActive: true } }),
-    prisma.application.count(),
-    prisma.application.count({ where: { status: "beklemede" } }),
-  ]);
-
-  const recentApplications = await prisma.application.findMany({
-    orderBy: { createdAt: "desc" },
-    take: 5,
-  });
+  let newsCount = 0, eventCount = 0, memberCount = 0, applicationCount = 0, pendingApplications = 0;
+  let recentApplications: Awaited<ReturnType<typeof prisma.application.findMany>> = [];
+  try {
+    [newsCount, eventCount, memberCount, applicationCount, pendingApplications] = await Promise.all([
+      prisma.news.count(),
+      prisma.event.count(),
+      prisma.teamMember.count({ where: { isActive: true } }),
+      prisma.application.count(),
+      prisma.application.count({ where: { status: "beklemede" } }),
+    ]);
+    recentApplications = await prisma.application.findMany({
+      orderBy: { createdAt: "desc" },
+      take: 5,
+    });
+  } catch (e) { console.error("[AdminDashboard]", e); }
 
   const cards = [
     { label: "Haberler",     value: newsCount,         icon: Newspaper,      href: "/admin/haberler",    bg: "bg-blue-50",   text: "text-blue-600",   border: "border-blue-100" },

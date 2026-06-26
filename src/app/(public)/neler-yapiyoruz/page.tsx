@@ -19,11 +19,16 @@ const iconMap: Record<string, React.ReactNode> = {
 };
 
 export default async function NelerYapiyoruzPage() {
-  const [events, stats, news] = await Promise.all([
-    prisma.event.findMany({ where: { isPublished: true }, orderBy: [{ category: "asc" }, { order: "asc" }] }),
-    prisma.stat.findMany(),
-    prisma.news.findMany({ where: { isPublished: true }, orderBy: { publishedAt: "desc" }, take: 6 }),
-  ]);
+  let events: Awaited<ReturnType<typeof prisma.event.findMany>> = [];
+  let stats:  Awaited<ReturnType<typeof prisma.stat.findMany>>  = [];
+  let news:   Awaited<ReturnType<typeof prisma.news.findMany>>  = [];
+  try {
+    [events, stats, news] = await Promise.all([
+      prisma.event.findMany({ where: { isPublished: true }, orderBy: [{ category: "asc" }, { order: "asc" }] }),
+      prisma.stat.findMany(),
+      prisma.news.findMany({ where: { isPublished: true }, orderBy: { publishedAt: "desc" }, take: 6 }),
+    ]);
+  } catch (e) { console.error("[NelerYapiyoruz]", e); }
 
   const lise       = events.filter((e) => e.category === "lise");
   const universite = events.filter((e) => e.category === "universite");

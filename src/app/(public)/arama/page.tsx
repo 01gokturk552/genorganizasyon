@@ -7,24 +7,22 @@ export const dynamic = "force-dynamic";
 export default async function AramaPage({ searchParams }: { searchParams: { q?: string } }) {
   const q = searchParams.q?.trim() || "";
 
-  const [news, events] = q
-    ? await Promise.all([
+  let news:   Awaited<ReturnType<typeof prisma.news.findMany>>  = [];
+  let events: Awaited<ReturnType<typeof prisma.event.findMany>> = [];
+  try {
+    if (q) {
+      [news, events] = await Promise.all([
         prisma.news.findMany({
-          where: {
-            isPublished: true,
-            OR: [{ title: { contains: q } }, { summary: { contains: q } }],
-          },
+          where: { isPublished: true, OR: [{ title: { contains: q } }, { summary: { contains: q } }] },
           take: 10,
         }),
         prisma.event.findMany({
-          where: {
-            isPublished: true,
-            OR: [{ title: { contains: q } }, { description: { contains: q } }],
-          },
+          where: { isPublished: true, OR: [{ title: { contains: q } }, { description: { contains: q } }] },
           take: 10,
         }),
-      ])
-    : [[], []];
+      ]);
+    }
+  } catch (e) { console.error("[Arama]", e); }
 
   const total = news.length + events.length;
 

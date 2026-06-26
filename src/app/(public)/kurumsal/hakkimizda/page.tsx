@@ -10,7 +10,8 @@ export const metadata: Metadata = {
 export const dynamic = "force-dynamic";
 
 export default async function HakkimizdaPage() {
-  const about = await prisma.about.findFirst();
+  let about = null;
+  try { about = await prisma.about.findFirst(); } catch (e) { console.error("[Hakkimizda]", e); }
 
   return (
     <div className="min-h-screen">

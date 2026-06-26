@@ -19,10 +19,13 @@ const CATEGORY_LABELS: Record<string, string> = {
 };
 
 export default async function EkibimizPage() {
-  const members = await prisma.teamMember.findMany({
-    where: { isActive: true },
-    orderBy: [{ category: "asc" }, { order: "asc" }],
-  });
+  let members: Awaited<ReturnType<typeof prisma.teamMember.findMany>> = [];
+  try {
+    members = await prisma.teamMember.findMany({
+      where: { isActive: true },
+      orderBy: [{ category: "asc" }, { order: "asc" }],
+    });
+  } catch (e) { console.error("[Ekibimiz]", e); }
 
   const grouped = members.reduce<Record<string, typeof members>>((acc, m) => {
     if (!acc[m.category]) acc[m.category] = [];
